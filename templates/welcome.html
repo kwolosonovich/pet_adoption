@@ -1,8 +1,37 @@
 {% extends 'index.html' %}
 
+{% block title %}Welcome{% endblock %}
 
 {% block content %}
 
-<h1>Welcome</h1>
+    <h1>Best Friend Pet Adoption</h1>
+
+
+{#        <img src="https://picsum.photos/id/1012/367/267" alt="">#}
+{#        <img src="https://images.unsplash.com/photo-1527362950785-f487a7c1fe48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=631&q=80" alt="">#}
+
+    <div class="container" id="our_pets">
+        <ul class="list-unstyled">
+            {% for pet in pets %}
+                <li class="media mb-2">
+                    <div class="photo-div">
+                        <img src="{{ pet.photo_url }}" class="img-thumbnail mw-100 mh-100" alt="..." id="profile-photo">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{ pet.name }}</h5>
+                        <h6 class="mt-0 mb-1">Species: {{ pet.species }}</h6>
+                        <h6 class="mt-0 mb-1">Age: {{ pet.age }}</h6>
+                        <h6 class="mt-0 mb-1">About: {{ pet.notes }}</h6>
+                        {% if pet.available == True %}
+                            <span class="badge badge-light">Available for Adoption</span>
+                        {% else %}
+                            <span class="badge badge-light">Currently Unavailable</span>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 
 {% endblock %}
