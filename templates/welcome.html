@@ -16,6 +16,7 @@
         </h5>
 {#        <img src="https://picsum.photos/id/1012/367/267" alt="">#}
 {#        <img src="https://images.unsplash.com/photo-1527362950785-f487a7c1fe48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=631&q=80" alt="">#}
+{#          https://images.unsplash.com/photo-1569491940783-6f8cdd7ba22a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60#}
     </div>
 
     <div class=" container pets-section">
@@ -25,7 +26,12 @@
             {% for pet in pets %}
                 <li class="media mb-2">
                     <div class="photo-div">
-                        <img src="{{ pet.photo_url }}" class="img-thumbnail mw-100 mh-100" alt="..." id="profile-photo">
+                        {% if pet.photo_url == "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" %}
+                            <img src="{{ pet.photo_url }}" class="img-thumbnail mw-100 mh-100" alt="pet photo" id="default-photo">
+                            <div class="coming-soon">Coming Soon</div>
+                        {% else %}
+                            <img src="{{ pet.photo_url }}" class="img-thumbnail mw-100 mh-100" alt="pet photo" id="profile-photo">
+                        {% endif %}
                     </div>
                     <div class="media-body">
                         <h5 class="mt-0 mb-1">{{ pet.name }}</h5>
@@ -44,9 +50,8 @@
     </div>
     </div>
 
-    <div class="container buttons">
+    <div class="buttons">
         <a href="/add" class="btn-lg btn-secondary">Add a Pet</a>
     </div>
-
 
 {% endblock %}

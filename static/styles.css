@@ -27,3 +27,15 @@
     right: 5%;
 }
 
+#default-photo {
+    filter: blur(8px);
+}
+.coming-soon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    size: 20px;
+    color: white;
+    font-weight: bold;
+}
