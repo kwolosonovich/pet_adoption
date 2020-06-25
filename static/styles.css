@@ -1,4 +1,18 @@
-h1 {
+
+.header {
+    height: 100px;
+    text-align: center;
+    vertical-align: center;
+    color: teal;
+}
+
+.description {
+    text-align: center;
+    height: 300px
+}
+
+.pets-section h1 {
+    text-align: center;
     color: teal;
 }
 
@@ -8,7 +22,7 @@ h1 {
     height: 200px;
 }
 
-img {
+.photo-div img {
     position: absolute;
     right: 5%;
 }

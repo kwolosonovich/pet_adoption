@@ -2,6 +2,7 @@ from flask import Flask, request, render_template,  redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
 from flask_bootstrap import Bootstrap
+from forms import AddPet
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -20,7 +21,15 @@ connect_db(app)
 
 @app.route('/')
 def welcome_page():
-    '''Render welcome page and list of current pets'''
+    '''Render welcome page and list of current pets.'''
     pets = Pet.query.all()
     print(pets)
     return render_template('welcome.html', pets=pets)
+
+@app.route('/add')
+def add_pet_form():
+    '''Render add pet form.'''
+
+    form = AddPet()
+
+    return render_template('add_pet_form.html', form=form)

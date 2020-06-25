@@ -4,12 +4,22 @@
 
 {% block content %}
 
-    <h1>Best Friend Pet Adoption</h1>
+    <div class="container header">
+        <h1>Best Friend Pet Adoption</h1>
+    </div>
 
-
+    <div class="container description">
+        <h5>
+            Our pets are waiting for the love and care they deserve, and in return you may just make a new best friend!
+            <br>
+            Find your perfect hiking partner, road-trip companion or snuggle buddy.
+        </h5>
 {#        <img src="https://picsum.photos/id/1012/367/267" alt="">#}
 {#        <img src="https://images.unsplash.com/photo-1527362950785-f487a7c1fe48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=631&q=80" alt="">#}
+    </div>
 
+    <div class=" container pets-section">
+    <h1>Meet our Pets!</h1>
     <div class="container" id="our_pets">
         <ul class="list-unstyled">
             {% for pet in pets %}
@@ -31,6 +41,11 @@
                 </li>
             {% endfor %}
         </ul>
+    </div>
+    </div>
+
+    <div class="container buttons">
+        <a href="/add" class="btn-lg btn-secondary">Add a Pet</a>
     </div>
 
 
