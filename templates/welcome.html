@@ -5,53 +5,70 @@
 {% block content %}
 
     <div class="container header">
-        <h1>Best Friend Pet Adoption</h1>
+        <h1 class="pink">Best Friend Pet Adoption</h1>
+        <h5 class="dark ml-4 m-r0">Our pets are waiting for the love and care they deserve, and in return you may just
+            make a new best friend!</h5>
+    </div>
+    <div class="description">
+        <div class="container w-80 h-100">
+            <div class="row h-100">
+                <div class="col mx-auto h-100 main">
+                    <h3 class="light mb-5 ml-4 mr-0 content">Find your perfect hiking partner,
+                        <br>
+                        road-trip companion
+                        <br>
+                        or snuggle buddy.</h3>
+                </div>
+                <div class="col des h-100 main">
+                    <img class="img-thumbnail content"
+                         src="https://images.unsplash.com/photo-1527362950785-f487a7c1fe48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=631&q=80"
+                         alt="">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="container description">
-        <h5>
-            Our pets are waiting for the love and care they deserve, and in return you may just make a new best friend!
-            <br>
-            Find your perfect hiking partner, road-trip companion or snuggle buddy.
-        </h5>
-{#        <img src="https://picsum.photos/id/1012/367/267" alt="">#}
-{#        <img src="https://images.unsplash.com/photo-1527362950785-f487a7c1fe48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=631&q=80" alt="">#}
-{#          https://images.unsplash.com/photo-1569491940783-6f8cdd7ba22a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60#}
-    </div>
-
-    <div class=" container pets-section">
-    <h1>Meet our Pets!</h1>
-    <div class="container" id="our_pets">
-        <ul class="list-unstyled">
+    <div class="container pets-section">
+        <h1 class="pink">Meet our Pets!</h1>
+        <div class="container" id="our_pets">
             {% for pet in pets %}
-                <li class="media mb-2">
-                    <div class="photo-div">
+                <div class="row dark row-cols-1 row-cols-sm-2 row-cols-md-3 mb-2 profile w-80 p-0">
+                    <div class="col photo-div main">
                         {% if pet.photo_url == "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" %}
-                            <img src="{{ pet.photo_url }}" class="img-thumbnail mw-100 mh-100" alt="pet photo" id="default-photo">
-                            <div class="coming-soon">Coming Soon</div>
+                            <img src="{{ pet.photo_url }}" class="img-thumbnail mw-100 mh-100 content" alt="pet photo"
+                                 id="default-photo">
+                            <div class="coming-soon content light"><h4>Coming Soon</h4></div>
                         {% else %}
-                            <img src="{{ pet.photo_url }}" class="img-thumbnail mw-100 mh-100" alt="pet photo" id="profile-photo">
+                            <img src="{{ pet.photo_url }}" class="img-thumbnail mw-100 mh-100 content mt-1 mb1"
+                                 alt="pet photo" id="profile-photo">
                         {% endif %}
                     </div>
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">{{ pet.name }}</h5>
-                        <h6 class="mt-0 mb-1">Species: {{ pet.species }}</h6>
-                        <h6 class="mt-0 mb-1">Age: {{ pet.age }}</h6>
-                        <h6 class="mt-0 mb-1">About: {{ pet.notes }}</h6>
+                    <div class="col mt-5">
+                        <h1 class="mt-0 mb-2">{{ pet.name }}</h1>
                         {% if pet.available == True %}
-                            <span class="badge badge-light">Available for Adoption</span>
+                            <h4><span class="badge bg-pink light badge-light">Available for Adoption</span></h4>
                         {% else %}
-                            <span class="badge badge-light">Currently Unavailable</span>
+                            <h4><span class="badge dark badge-light">Currently Unavailable</span></h4>
                         {% endif %}
                     </div>
-                </li>
+                    <div class="col p-l-1 mt-5 align-middle" id="pet-info">
+                        <h5 class="mt-0 mb-1">Species: {{ pet.species }}</h5>
+                        {% if pet.age == None %}
+                            <h5 class="mt-0 mb-1">Age: Unknown</h5>
+                        {% else %}
+                            <h5 class="mt-0 mb-1">Age: {{ pet.age }}</h5>
+                        {% endif %}
+                        <h5 class="mt-0 mb-1">About: {{ pet.notes }}</h5>
+                        <h6><a class="badge light dark-bg align-middle" id="edit" href="/edit/{{ pet.id }}">Edit</a>
+                        </h6>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
-    </div>
+        </div>
     </div>
 
-    <div class="buttons">
-        <a href="/add" class="btn-lg btn-secondary">Add a Pet</a>
+    <div class="btn-section main">
+        <a href="/add" class="light dark-bg btn-lg btn content">Add a Pet</a>
     </div>
 
 {% endblock %}

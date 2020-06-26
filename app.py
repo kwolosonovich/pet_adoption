@@ -1,8 +1,9 @@
-from flask import Flask, request, render_template,  redirect, flash, session
+from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
 from flask_bootstrap import Bootstrap
 from forms import AddPet
+from seed import seed_database
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -17,24 +18,22 @@ debug = DebugToolbarExtension(app)
 
 connect_db(app)
 
-db.drop_all()
-db.create_all()
+seed_database()
+
 
 @app.route('/')
 def welcome_page():
     '''Render welcome page and list of current pets.'''
     pets = Pet.query.all()
-    print('In welcome')
-    print(pets)
     return render_template('welcome.html', pets=pets)
+
 
 @app.route('/add', methods=['POST', 'GET'])
 def add_pet_form():
     '''Render add pet form.'''
 
     form = AddPet()
-    print('In add pet form')
-    print(form.__dict__)
+
     if form.validate_on_submit():
         print('form validated')
         name = form.name.data
@@ -52,3 +51,12 @@ def add_pet_form():
         return redirect('/')
     else:
         return render_template('add_pet_form.html', form=form)
+
+
+@app.route('/edit/<pet_id>', methods=['GET', 'POST'])
+def edit_pet_form(pet_id):
+    print(pet_id)
+    '''Render edit pet form and pet details.'''
+    pet = Pet.query.get_or_404(pet_id)
+    form = AddPet(obj=pet)
+    return render_template('edit_pet_form.html', form=form, pet=pet)

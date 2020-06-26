@@ -1,41 +1,104 @@
+body, #nav-style {
+    background-color: #ece9ea;
+    vertical-align: center;
+    text-align: center;
+}
+
+h1, h3 {
+    font-family: 'Righteous', cursive;
+}
+
+h4, h5, h6 {
+    font-family: 'Quicksand', sans-serif;
+}
 
 .header {
-    height: 100px;
-    text-align: center;
+    height: 200px;
     vertical-align: center;
-    color: teal;
+    margin-top: 100px
 }
 
 .description {
+    height: 500px;
+    margin-left: 0;
+    margin-right: 0;
     text-align: center;
-    height: 300px
+    width: 100%;
+    background-color: #f62158;
 }
 
-.pets-section h1 {
-    text-align: center;
-    color: teal;
+.main {
+    position: relative;
+}
+
+.content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.des .img-thumbnail {
+    height: 400px;
+}
+
+.pets-section {
+    margin-top: 100px;
 }
 
 .photo-div {
-    position: relative;
     width: 300px;
     height: 200px;
-}
-
-.photo-div img {
-    position: absolute;
-    right: 5%;
 }
 
 #default-photo {
     filter: blur(8px);
 }
+
 .coming-soon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    size: 20px;
-    color: white;
-    font-weight: bold;
+}
+
+.light {
+    color: #ece9ea;
+}
+
+.pink, #label {
+    color: #f62158;
+}
+
+.dark, a.nav-option {
+    color: #564e4e;
+}
+
+a:hover {
+    color: #f62158;
+}
+
+span.bg-pink, .submit-btn {
+    background-color: #f62158;
+}
+
+a.dark-bg {
+    background-color: #564e4e;
+}
+
+.profile {
+    border-radius: 7px;
+    background-color: white;
+    vertical-align: center;
+}
+
+#our_pets {
+    margin-top: 30px;
+}
+
+.btn-section {
+    height: 150px;
+    align-content: center;
+    align-self: center;
+    font-family: 'Quicksand', sans-serif;
 }

@@ -9,7 +9,6 @@ def connect_db(app):
     db.init_app(app)
 
 
-
 class Pet(db.Model):
     '''Pet model.'''
 
@@ -17,13 +16,19 @@ class Pet(db.Model):
     default_note = "Coming Soon"
     __tablename__ = 'pets'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text, nullable=False)
-    species = db.Column(db.Text, nullable=False)
+    id = db.Column(db.Integer,
+                   primary_key=True,
+                   autoincrement=True)
+    name = db.Column(db.String,
+                     nullable=False)
+    species = db.Column(db.Text,
+                        nullable=False)
     photo_url = db.Column(db.Text,
                           nullable=False)
-    age = db.Column(db.Integer,
+    age = db.Column(db.String,
                     nullable=True)
     notes = db.Column(db.String,
                       nullable=False)
-    available = db.Column(db.Boolean, nullable=False, default=True)
+    available = db.Column(db.Boolean,
+                          nullable=False,
+                          default=True)
