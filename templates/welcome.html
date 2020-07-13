@@ -67,8 +67,13 @@
         </div>
     </div>
 
+    {% for msg in get_flashed_messages() %}
+{#        <div class="alert alert-success alert-dismissible fade show mx-auto text-center" id="msg-alt"><h6>{{ msg }}</h6></div>#}
+    {% endfor %}
+
     <div class="btn-section main">
         <a href="/add" class="light dark-bg btn-lg btn content">Add a Pet</a>
     </div>
 
 {% endblock %}
+

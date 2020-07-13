@@ -102,3 +102,7 @@ a.dark-bg {
     align-self: center;
     font-family: 'Quicksand', sans-serif;
 }
+#msg-alt {
+    background-color: #f62158;
+    width: 20%;
+}

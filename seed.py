@@ -7,7 +7,6 @@ def seed_database():
     db.create_all()
 
     # current pets to add to database
-
     ava = Pet(name="Ava", species="dog", photo_url="https://images.unsplash.com/photo-1543333108-4f3e0f5a7d11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1336&q=80",
               age="3",
               notes="Husky",

@@ -6,7 +6,6 @@ from forms import AddPet
 from seed import seed_database
 
 app = Flask(__name__)
-Bootstrap(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
@@ -35,7 +34,6 @@ def add_pet_form():
     form = AddPet()
 
     if form.validate_on_submit():
-        print('form validated')
         name = form.name.data
         species = form.species.data
         photo_url = form.photo_url.data
@@ -48,6 +46,10 @@ def add_pet_form():
         new_pet = Pet(name=name, species=species, photo_url=photo_url, age=age, notes=notes)
         db.session.add(new_pet)
         db.session.commit()
+
+        flash("Pet added")
+
+
         return redirect('/')
     else:
         return render_template('add_pet_form.html', form=form)
@@ -55,8 +57,23 @@ def add_pet_form():
 
 @app.route('/edit/<pet_id>', methods=['GET', 'POST'])
 def edit_pet_form(pet_id):
-    print(pet_id)
     '''Render edit pet form and pet details.'''
     pet = Pet.query.get_or_404(pet_id)
     form = AddPet(obj=pet)
+    if form.validate_on_submit():
+
+        pet.name = form.name.data
+        pet.species = form.species.data
+        pet.photo_url = form.photo_url.data
+        if len(pet.photo_url) == 0 or pet.photo_url is None:
+            pet.photo_url = Pet.default_image_url
+        pet.age = form.age.data
+        pet.notes = form.notes.data
+        if len(pet.notes) == 0 or pet.notes is None:
+            pet.notes = Pet.default_note
+        db.session.commit()
+
+        flash("Pet edited")
+
+        return redirect('/')
     return render_template('edit_pet_form.html', form=form, pet=pet)
